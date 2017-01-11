@@ -3,12 +3,11 @@ package no.webstep.iot.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.d21s.api.v1.ListThingsResponse;
 import com.d21s.api.v1.Thing;
-import no.webstep.iot.api.GoogleMail;
+import no.webstep.iot.api.Mailer;
 import no.webstep.iot.disruptive.DisruptiveClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.MessagingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,19 +33,11 @@ public class HelloWorldResource {
 
             if(thing.getName().equals("N-0c543203")){
                 ting.put(thing.getType().getId(),thing);
-                try {
-//                    GoogleMail.sendMessage();
-                    GoogleMail.createEmail("eirikbroen@gmail.com", "eirik.broen@webstep.no", "tester", "a body..." + thing.getName());
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
+                Mailer test = new Mailer();
+                test.doSendMail("wsiothackathon", "makeItawesome", "eirikbroen@gmail.com",
+                        "you got mail", "You have mail " + thing.getName());
                 logger.info("Fikk thing {},{}",thing.getName(),thing.getType().getId());
             }
-
-/*
-            if ("temperature".equals(thing.getType().getId()) && enTemperaturSensor == null)
-                enTemperaturSensor = thing;
-*/
         }
 
 
