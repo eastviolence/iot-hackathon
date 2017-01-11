@@ -43,6 +43,11 @@
                 <artifactId>api</artifactId>
                 <version>${iot.api.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.twilio.sdk</groupId>
+                <artifactId>twilio</artifactId>
+                <version>(7.0,7.9)</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -75,6 +80,11 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-assets</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>(7.0,7.9)</version>
         </dependency>
     </dependencies>
 
