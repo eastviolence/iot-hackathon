@@ -23,22 +23,6 @@ public class ThingListener {
     public ThingListener() {
         client = new DisruptiveClient("6310afd33c5a4c7fac0d30b51a5df1d5");
 
-        client.watchThing("206844419", new StreamObserver<WatchThingResponse>() {
-            @Override
-            public void onNext(WatchThingResponse watchThingResponse) {
-                boolean objectPresent = watchThingResponse.getStateChanged().getObjectPresent();
-                System.out.println("State endret til " + objectPresent);
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-        });
+        client.watchThing("206844419", new PostOfficeStreamObserver());
     }
 }

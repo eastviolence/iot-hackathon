@@ -1,18 +1,14 @@
 package no.webstep.iot.resources;
 
 import com.codahale.metrics.annotation.Timed;
-import com.d21s.api.v1.ListThingsResponse;
-<<<<<<< Updated upstream
-import com.d21s.api.v1.Thing;
+import com.d21s.api.v1.ListThingsResponse;import com.d21s.api.v1.Thing;
 import no.webstep.iot.api.GoogleMail;
 import no.webstep.iot.disruptive.DisruptiveClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-=======
 import com.fasterxml.jackson.databind.ObjectMapper;
 import no.webstep.iot.api.ThingResponse;
 import no.webstep.iot.disruptive.DisruptiveClient;
->>>>>>> Stashed changes
 
 import javax.mail.MessagingException;
 import javax.ws.rs.GET;
@@ -38,7 +34,6 @@ public class HelloWorldResource {
     @GET
     @Timed
     public Response sayHello() {
-<<<<<<< Updated upstream
         DisruptiveClient client = new DisruptiveClient("6310afd33c5a4c7fac0d30b51a5df1d5");
         Map<String,Thing> ting = new HashMap<>();
 
@@ -65,12 +60,5 @@ public class HelloWorldResource {
 
 
         return Response.ok().build();
-=======
-        ListThingsResponse listThingsResponse = client.listThings();
-        ThingResponse thingResponse = new ThingResponse();
-
-        thingResponse.setId(listThingsResponse.getThings(0).getId());
-        return Response.ok().entity(thingResponse).build();
->>>>>>> Stashed changes
     }
 }
