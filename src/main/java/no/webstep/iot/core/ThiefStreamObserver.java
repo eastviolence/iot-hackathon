@@ -36,7 +36,9 @@ public class ThiefStreamObserver implements StreamObserver<WatchThingResponse> {
         Webcam webcam = Webcam.getDefault();
         webcam.open();
         try {
-            ImageIO.write(webcam.getImage(), "PNG", new File(""+LocalDateTime.now().toString()+".png"));
+            String pathname = "" + LocalDateTime.now().toString() + ".png";
+            File output = new File(pathname);
+            ImageIO.write(webcam.getImage(), "PNG", output);
         } catch (IOException e) {
             System.out.println(e);
         } finally {
