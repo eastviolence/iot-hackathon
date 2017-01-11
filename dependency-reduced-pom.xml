@@ -57,8 +57,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <plugin>
@@ -117,9 +117,19 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-assets</artifactId>
+        <version>${dropwizard.version}</version>
+      </dependency>
+      <dependency>
         <groupId>no.webstep.iot.disruptive</groupId>
         <artifactId>api</artifactId>
         <version>${iot.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.twilio.sdk</groupId>
+        <artifactId>twilio</artifactId>
+        <version>(7.0,7.9)</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

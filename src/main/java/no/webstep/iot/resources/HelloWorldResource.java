@@ -21,6 +21,13 @@ import java.util.Map;
 public class HelloWorldResource {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private static final String APIKEY = "6310afd33c5a4c7fac0d30b51a5df1d5";
+    private final DisruptiveClient client;
+
+    public HelloWorldResource() {
+       client = new DisruptiveClient("6310afd33c5a4c7fac0d30b51a5df1d5");
+    }
+
     @GET
     @Timed
     public Response sayHello() {
