@@ -1,10 +1,14 @@
 package no.webstep.iot.core;
 
 import com.d21s.api.v1.WatchThingResponse;
+import com.github.sarxos.webcam.Webcam;
 import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
 import no.webstep.iot.api.SMSService;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -29,11 +33,14 @@ public class PostOfficeStreamObserver implements StreamObserver<WatchThingRespon
         if(objectPresent){
             smsService.sendSMS("+4795948929", generateSMSText(temperature, received));
         }
+
     }
 
     private String generateSMSText(float temperature, Date received) {
         return String.format("En pakke til deg ankom kl %s.%s. Pakken lagres på %s grader celsius", received.getHours(), received.getMinutes(), temperature);
     }
+
+
 
     @Override
     public void onError(Throwable throwable) {
