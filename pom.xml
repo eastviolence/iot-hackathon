@@ -34,6 +34,11 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-assets</artifactId>
+                <version>${dropwizard.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>no.webstep.iot.disruptive</groupId>
                 <artifactId>api</artifactId>
                 <version>${iot.api.version}</version>
@@ -52,6 +57,7 @@
             <groupId>no.webstep.iot.disruptive</groupId>
             <artifactId>api</artifactId>
         </dependency>
+<<<<<<< Updated upstream
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
@@ -66,6 +72,12 @@
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-gmail</artifactId>
             <version>v1-rev53-1.18.0-rc</version>
+=======
+
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-assets</artifactId>
+>>>>>>> Stashed changes
         </dependency>
     </dependencies>
 
@@ -119,8 +131,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
