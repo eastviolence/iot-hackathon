@@ -28,6 +28,7 @@ public class PostOfficeStreamObserver implements StreamObserver<WatchThingRespon
 
         if(objectPresent){
             smsService.sendSMS("+4795948929", generateSMSText(temperature, received));
+
         }
     }
 

@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class HelloWorldResource {
                 ting.put(thing.getType().getId(),thing);
                 Mailer test = new Mailer();
                 test.doSendMail("wsiothackathon", "makeItawesome", "eirikbroen@gmail.com",
-                        "you got mail", "You have mail " + thing.getName());
+                        "you got mail", "You have mail " + thing.getName(), null);
                 logger.info("Fikk thing {},{}",thing.getName(),thing.getType().getId());
             }
         }

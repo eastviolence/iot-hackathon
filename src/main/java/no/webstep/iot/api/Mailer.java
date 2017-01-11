@@ -1,19 +1,22 @@
 package no.webstep.iot.api;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.Scanner;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
 public class Mailer {
 
     // sends mail
-    public void doSendMail(final String username, final String password, String to, String subject, String email_body) {
+    public void doSendMail(final String username, final String password, String to, String subject, String email_body, File attachment) {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -34,8 +37,17 @@ public class Mailer {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
-            message.setText(email_body);
+            BodyPart messageBodyPart = new MimeBodyPart();
+            Multipart multipart = new MimeMultipart();
+            messageBodyPart.setText(email_body);
+            DataSource source = new FileDataSource(attachment);
+
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(attachment.getName());
+            multipart.addBodyPart(messageBodyPart);
+            message.setContent(multipart);
             Transport.send(message);
+
         } catch (Exception e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, e.toString());
