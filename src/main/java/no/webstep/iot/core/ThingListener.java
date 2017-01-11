@@ -12,5 +12,6 @@ public class ThingListener {
         client = new DisruptiveClient("6310afd33c5a4c7fac0d30b51a5df1d5");
 
         client.watchThing("206844419", new PostOfficeStreamObserver());
+        client.watchThing("206844419", new ThiefStreamObserver());
     }
 }
