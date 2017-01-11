@@ -3,6 +3,7 @@ package no.webstep.iot.core;
 import com.d21s.api.v1.WatchThingResponse;
 import com.github.sarxos.webcam.Webcam;
 import io.grpc.stub.StreamObserver;
+import no.webstep.iot.api.Mailer;
 
 import javax.imageio.ImageIO;
 import java.io.File;
@@ -39,6 +40,10 @@ public class ThiefStreamObserver implements StreamObserver<WatchThingResponse> {
             String pathname = "" + LocalDateTime.now().toString() + ".png";
             File output = new File(pathname);
             ImageIO.write(webcam.getImage(), "PNG", output);
+            Mailer test = new Mailer();
+            test.doSendMail("wsiothackathon", "makeItawesome", "eirikbroen@gmail.com",
+                    "you got mail", "Someone is stealing your stuff! This guy: ", null);
+
         } catch (IOException e) {
             System.out.println(e);
         } finally {
